@@ -18,6 +18,7 @@ app = express();
 mysql.connect((err) => {
     if(err) throw err;
 });
+
 app.get('/', (req, res) => {
     res.writeHead(200, {'Content-Type':'text/json'});
     console.log("homemeeeeeeeeeeeeeeeee");
@@ -98,7 +99,8 @@ app.get('/get/end_summary/:tripID', (req, res) => {
     res.end();
 });
 
-server.listen(port,() => {
+
+app.listen(port,() => {
     console.log(`Server running at port `+port);
   });
 
