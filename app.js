@@ -18,7 +18,10 @@ app = express();
 mysql.connect((err) => {
     if(err) throw err;
 });
-
+app.get('/', (req, res) => {
+    res.writeHead(200, {'Content-Type':'text/json'});
+    console.log("homemeeeeeeeeeeeeeeeee");
+});
 //start trip summary
 app.get('/get/start_summary/:vehNum', (req, res) => {
     res.writeHead(200, {'Content-Type':'text/json'});
