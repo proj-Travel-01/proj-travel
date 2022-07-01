@@ -1,4 +1,4 @@
-const mysql = require('../travel/database.js')
+const mysql = require('./database.js')
 const express = require('express')
 
 app = express();
@@ -11,8 +11,8 @@ mysql.connect((err) => {
 app.get('/get/start_summary/:vehNum', (req, res) => {
     res.writeHead(200, {'Content-Type':'text/json'});
     let vehNum = req.params.vehNum;
-
-    mysql.query('SELECT * FROM TRAVEL.START_TRIP WHERE VEHICLE_NUM = ? ORDER BY START_TIME DESC LIMIT 1',[vehNum],(err, res) => {
+    let sql = 'SELECT * FROM TRAVEL.START_TRIP WHERE VEHICLE_NUM = ? ORDER BY START_TIME DESC LIMIT 1';
+    mysql.query(sql, [vehNum], (err, res) => {
         if(err) throw err;
 
         console.log(JSON.stringify(res));
