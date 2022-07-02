@@ -25,7 +25,7 @@ app.get('/get/start_summary/:vehNum', (req, response) => {
 
         
         response.send(res)
-        response.end()
+        //response.end()
     });
     //end
     
@@ -48,7 +48,7 @@ app.post('/post/starttrip', (req, response) => {
         
         console.log("inserted start trip details")
         response.send(res);
-        response.end();
+        //response.end();
     });
 
     
@@ -71,7 +71,7 @@ app.post('/post/endtrip', (req, response) => {
         
         console.log("inserted end trip details")
         response.send(res);
-        response.end();
+        //response.end();
     });
 
     
@@ -89,7 +89,7 @@ app.get('/get/end_summary/:tripID', (req, result) => {
             throw err;
 
         result.send(res);
-        result.end();
+        //result.end();
         
     });
       
