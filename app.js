@@ -89,7 +89,7 @@ app.get('/get/end_summary/:tripID', (req, result) => {
             throw err;
 
         result.send(res);
-        //result.end();
+        
         
     });
       
