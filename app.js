@@ -40,10 +40,11 @@ app.post('/post/starttrip', (req, response) => {
     let startTemp = req.query.startTemp;
     let loadCapacity = req.query.loadCapacity;
     let currentKM = req.query.currentKM;
+    let loadingPic= req.query.loadingPic;
 
 
-    let query = 'INSERT INTO bthbnab1ona1jdeoc3nn.start_trip (DRIVER_NAME, VEHICLE_NUM, START_LOCATION, START_TEMP, LOAD_CAPACITY, CURRENT_KM, START_TIME) VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)';
-    mysql.query(query,[driverName, vehicleNum, startLocation, startTemp, loadCapacity, currentKM],(err, res) => {
+    let query = 'INSERT INTO bthbnab1ona1jdeoc3nn.start_trip (DRIVER_NAME, VEHICLE_NUM, START_LOCATION, START_TEMP, LOAD_CAPACITY, CURRENT_KM,LOADING_PHOTO, START_TIME) VALUES (?, ?, ?,?, ?, ?, ?, CURRENT_TIMESTAMP)';
+    mysql.query(query,[driverName, vehicleNum, startLocation, startTemp, loadCapacity, currentKM,loadingPic],(err, res) => {
         if(err) throw err;
         
         console.log("inserted start trip details")
@@ -62,11 +63,12 @@ app.post('/post/endtrip', (req, response) => {
     let endLocation = req.query.endLocation;
     let endTemp = req.query.endTemp;
     let endKM = req.query.endKM;
+    let unloadingPic= req.query.unloadingPic;
 
 
-    let query = 'INSERT INTO bthbnab1ona1jdeoc3nn.end_trip (TRIP_ID, END_LOCATION, END_TEMP, END_KM, END_TIME) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)';
+    let query = 'INSERT INTO bthbnab1ona1jdeoc3nn.end_trip (TRIP_ID, END_LOCATION, END_TEMP, END_KM,UNLOADING_PHOTO, END_TIME) VALUES (?, ?, ?,?, ?, CURRENT_TIMESTAMP)';
 
-    mysql.query(query,[tripID, endLocation, endTemp, endKM],(err, res) => {
+    mysql.query(query,[tripID, endLocation, endTemp, endKM,unloadingPic],(err, res) => {
         if(err) throw err;
         
         console.log("inserted end trip details")
