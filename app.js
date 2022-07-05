@@ -5,14 +5,17 @@ const express = require('express')
 
 const app = express();
 
+
+
 mysql.connect((err) => {
     if(err) throw err;
 });
 
 
-//start trip summary
+//start trip summary  m
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send(req.socket.remoteAddress);
+    res.end()
   })
 
 app.get('/get/start_summary/:vehNum', (req, response) => {
