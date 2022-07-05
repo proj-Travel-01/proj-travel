@@ -2,6 +2,7 @@ const port = process.env.PORT || 3000
 
 const mysql = require('./database.js')
 const express = require('express')
+const request = require('request')
 
 const app = express();
 
@@ -13,9 +14,15 @@ mysql.connect((err) => {
 
 
 //start trip summary  m
-app.get('/', (req, res) => {
-    res.send(req.socket.remoteAddress);
-    res.end()
+app.get('/', (req, result) => {
+    
+    request({
+        url:"http://ip-api.com/json/",
+        json:true
+    },(err,res,body)=>{
+        result.send(body);
+    })
+
   })
 
 app.get('/get/start_summary/:vehNum', (req, response) => {
