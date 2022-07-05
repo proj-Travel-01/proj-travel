@@ -5,14 +5,18 @@ const express = require('express')
 
 const app = express();
 
+var getIP = require('ipware')().get_ip;
+
+
 mysql.connect((err) => {
     if(err) throw err;
 });
 
 
 //start trip summary
-app.get('/', (req, res) => {
-    res.send('Hello World!')
+app.post('/', (req, res) => {
+    res.send(req.socket.remoteAddress);
+    res.end()
   })
 
 app.get('/get/start_summary/:vehNum', (req, response) => {
