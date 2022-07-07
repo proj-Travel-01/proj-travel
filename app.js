@@ -14,7 +14,7 @@ mysql.connect((err) => {
 
 
 //start trip summary  m
-app.get('/', (req, result) => {
+app.get('/', async (req, result) => {
     
     request({
         url:"http://ip-api.com/json/",
@@ -25,7 +25,7 @@ app.get('/', (req, result) => {
 
   })
 
-app.get('/get/start_summary/:vehNum', (req, response) => {
+app.get('/get/start_summary/:vehNum', async (req, response) => {
     //res.writeHead(200, {'Content-Type':'text/json'});
     let vehNum = req.params.vehNum;
     let sql = 'SELECT * FROM bthbnab1ona1jdeoc3nn.start_trip WHERE VEHICLE_NUM = ? ORDER BY START_TIME DESC LIMIT 1';
@@ -42,7 +42,7 @@ app.get('/get/start_summary/:vehNum', (req, response) => {
 });
 
 //posting start trip
-app.post('/post/starttrip', (req, response) => {
+app.post('/post/starttrip', async (req, response) => {
     //res.writeHead(200, {'Content-Type':'text/html'});
     let driverName = req.query.driverName;
     let vehicleNum = req.query.vehicleNum;
@@ -66,7 +66,7 @@ app.post('/post/starttrip', (req, response) => {
 })
 
 //post end trip details
-app.post('/post/endtrip', (req, response) => {
+app.post('/post/endtrip', async (req, response) => {
     //res.writeHead(200, {'Content-Type':'text/html'});
     
     let tripID = req.query.tripID;
@@ -90,7 +90,7 @@ app.post('/post/endtrip', (req, response) => {
 })
 
 //end trip summary
-app.get('/get/end_summary/:tripID', (req, result) => {
+app.get('/get/end_summary/:tripID', async (req, result) => {
     //result.writeHead(200, {'Content-Type':'text/json'});
 
     let tripID = req.params.tripID;
